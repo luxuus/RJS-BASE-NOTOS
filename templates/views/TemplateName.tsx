@@ -18,9 +18,7 @@ const TemplateName: FC<TemplateNameProps> = () => {
 
    return (
    <div className="TemplateName" data-testid="TemplateName">
-      <UI.Header>TemplateName</UI.Header>
       <UI.Main>TemplateName Content</UI.Main>
-      <UI.Footer />
    </div>
    )
 };

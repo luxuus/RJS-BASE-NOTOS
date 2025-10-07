@@ -28,7 +28,7 @@ git branch -M dev
 
 <!-- LINE_COUNT_PLACEHOLDER_1 -->
 
-**Lines of Code:** `1638`  
+**Lines of Code:** `1647`  
 **Project Size:** Compact utility 🛠️
 
 | Extension | Files | Effective LOC |
@@ -38,9 +38,9 @@ git branch -M dev
 | `.md` | 9 | 342 |
 | `.mdx` | 1 | 327 |
 | `.css` | 5 | 133 |
+| `no_ext` | 13 | 9 |
 | `.avif` | 1 | 5 |
-| `no_ext` | 12 | 0 |
-| **Total** | **65** | **1638** |
+| **Total** | **66** | **1647** |
 
 <!-- LINE_COUNT_PLACEHOLDER_2 -->
 

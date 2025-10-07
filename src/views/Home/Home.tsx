@@ -18,9 +18,13 @@ const Home: FC<HomeProps> = () => {
 
    return (
    <div className="Home" data-testid="Home">
-      <UI.Header>Home</UI.Header>
-      <UI.Main>Home Content</UI.Main>
-      <UI.Footer />
+      <UI.Main>
+         <h2>Home Content</h2>
+         <hr />
+         <UI.Button level="optional" size="large" action={() => alert('Button clicked!')} disabled>Click Me</UI.Button>
+         <UI.Button level="primary" size="medium" action={() => alert('Button clicked!')}>Click Me</UI.Button>
+         <UI.Button level="critical" size="small" action={() => alert('Button clicked!')}>Click Me</UI.Button>
+      </UI.Main>
    </div>
    )
 };
