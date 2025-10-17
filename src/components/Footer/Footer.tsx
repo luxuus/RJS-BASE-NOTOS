@@ -1,42 +1,91 @@
-/* Global Imports */
-import React, { FC } from 'react';
+import React, { FC, PropsWithChildren } from "react";
 
-/* Application Level Imports */
-import * as Hooks from '@/hooks';
+import {
+  ContentWrapper,
+  FooterContact,
+  FooterLegal,
+  FooterSocial,
+  FooterWrapper,
+} from "./Footer.styled";
 
-/* Local Imports */
-import { FooterWrapper } from './Footer.styled';
-
-
-interface FooterProps { }
-
-
-const Footer: FC<FooterProps> = () => {
-
-   // Hooks.useGloblaEvent('click',()=> console.log('click event'));
-
-   return(
-   <FooterWrapper data-testid="Footer">
-      Footer Component
-   </FooterWrapper>
-   );
-
+interface FooterProps extends PropsWithChildren {}
+interface ContactProps {
+  text: string;
+  iconUrl: string;
+}
+interface SocialProps {
+  url: string;
+  label?: string;
+  iconUrl: string;
+}
+interface LegalProps {
+  text: string;
+  url: string;
+}
+interface ContentProps extends PropsWithChildren {
+  label: string;
 }
 
-/**
- * USAGE: Footer description to complete.
- * @example
- * <Footer /> 
- */
-const FooterMemo = React.memo(Footer, (prevProps, nextProps) => {
-   /*
-   Compare props to prevent unnecessary re-renders
-   return true if props are equal
-   return false if props are not equal
-   */
-   console.log(prevProps, nextProps)
-   return true;
-});
-FooterMemo.displayName = 'Footer Memoized';
+const Footer: FC<FooterProps> & {
+  Contact: FC<ContactProps>;
+  Social: FC<SocialProps>;
+  Legal: FC<LegalProps>;
+  Content: FC<ContentProps>;
+} = ({ children }) => {
+  return <FooterWrapper data-testid="Footer">{children}</FooterWrapper>;
+};
+
+const Content: FC<ContentProps> = ({ children, label }) => {
+  return (
+    <ContentWrapper>
+      <h4>{label}</h4>
+      <ul>{children}</ul>
+    </ContentWrapper>
+  );
+};
+const Contact: FC<ContactProps> = ({ text, iconUrl }) => {
+  return (
+    <FooterContact>
+      <img src={iconUrl} height={20} alt="contact" />
+      <span>{text}</span>
+    </FooterContact>
+  );
+};
+
+const Social: FC<SocialProps> = ({ label, url, iconUrl }) => {
+  return (
+    <FooterSocial>
+      <img src={iconUrl} height={20} alt="social" />
+      <a href={url}>{label}</a>
+    </FooterSocial>
+  );
+};
+
+const Legal: FC<LegalProps> = ({ text, url }) => {
+  return (
+    <FooterLegal>
+      <a href={url}>{text}</a>
+    </FooterLegal>
+  );
+};
+
+Footer.Contact = Contact;
+Footer.Legal = Legal;
+Footer.Social = Social;
+Footer.Content = Content;
+
+const FooterMemo = React.memo(Footer) as unknown as FC<FooterProps> & {
+  Contact: FC<ContactProps>;
+  Social: FC<SocialProps>;
+  Legal: FC<LegalProps>;
+  Content: FC<ContentProps>;
+};
+
+FooterMemo.Contact = React.memo(Contact);
+FooterMemo.Social = React.memo(Social);
+FooterMemo.Legal = React.memo(Legal);
+FooterMemo.Content = React.memo(Content);
+
+FooterMemo.displayName = "Footer";
 
 export default FooterMemo;
