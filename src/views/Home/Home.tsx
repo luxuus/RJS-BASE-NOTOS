@@ -17,29 +17,41 @@ const Home: FC<HomeProps> = () => {
     <div className="Home" data-testid="Home">
       <UI.Main>
         <h2>Home Content</h2>
+        <form>
+          <UI.InputGroup>
+            <UI.InputGroup.Label htmlFor="username">
+              Username
+            </UI.InputGroup.Label>
+            <UI.InputGroup.Input id="username" type="text" required />
+            <UI.InputGroup.Error>
+              The username is not valid.
+            </UI.InputGroup.Error>
+          </UI.InputGroup>
+          <UI.InputGroup>
+            <UI.InputGroup.Label htmlFor="email">Email</UI.InputGroup.Label>
+            <UI.InputGroup.Input id="name" type="email" required />
+            <UI.InputGroup.Error>
+              Email address is not valid.
+            </UI.InputGroup.Error>
+          </UI.InputGroup>
+          <UI.InputGroup>
+            <UI.InputGroup.Label htmlFor="password">
+              Password
+            </UI.InputGroup.Label>
+            <UI.InputGroup.Input id="password" type="password" required />
+            <UI.InputGroup.Error>
+              The password is not valid.
+            </UI.InputGroup.Error>
+          </UI.InputGroup>
+          <UI.Button
+            level="critical"
+            size="small"
+            action={() => alert("Button clicked!")}
+          >
+            Submit
+          </UI.Button>
+        </form>
         <hr />
-        <UI.Button
-          level="optional"
-          size="large"
-          action={() => alert("Button clicked!")}
-          disabled
-        >
-          Click Me
-        </UI.Button>
-        <UI.Button
-          level="primary"
-          size="medium"
-          action={() => alert("Button clicked!")}
-        >
-          Click Me
-        </UI.Button>
-        <UI.Button
-          level="critical"
-          size="small"
-          action={() => alert("Button clicked!")}
-        >
-          Click Me
-        </UI.Button>
         <UI.Image
           url={
             "https://images.unsplash.com/photo-1548772981-2fded21624d9?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2574"

@@ -12,7 +12,7 @@ interface ImageProps {
   description: string;
   width?: number;
   height?: number;
-  aspectRactio?: string;
+  loading?: "eager" | "lazy";
 }
 
 const Image: FC<ImageProps> = ({
@@ -20,7 +20,7 @@ const Image: FC<ImageProps> = ({
   description,
   width,
   height,
-  aspectRactio,
+  loading = "eager",
 }) => {
   return (
     <ImageWrapper data-testid="Image">
@@ -29,7 +29,7 @@ const Image: FC<ImageProps> = ({
         alt={description}
         width={width}
         height={height}
-        style={{ aspectRatio: aspectRactio }}
+        loading={loading}
       />
     </ImageWrapper>
   );

@@ -3,9 +3,9 @@
 - ✅ Header
 - ✅ Button
 - ✅ Main
-- Footer
-- Image
-- Input
+- ✅ Footer
+- ✅ Image
+- ✅ Input
 - Card
 - AutoComplete
 - SearchField
