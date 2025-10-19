@@ -17,6 +17,8 @@ const Home: FC<HomeProps> = () => {
     <div className="Home" data-testid="Home">
       <UI.Main>
         <h2>Home Content</h2>
+        <UI.Loader spinner={false} progress={50} max={100} />
+        <UI.Loader spinner />
         <UI.Card>
           <UI.Card.Trigger>X</UI.Card.Trigger>
           <UI.Card.Header>
