@@ -17,6 +17,26 @@ const Home: FC<HomeProps> = () => {
     <div className="Home" data-testid="Home">
       <UI.Main>
         <h2>Home Content</h2>
+        <UI.Card>
+          <UI.Card.Trigger>X</UI.Card.Trigger>
+          <UI.Card.Header>
+            <h2>How to get money.</h2>
+          </UI.Card.Header>
+
+          <UI.Card.Content>
+            <h3>Here is how to get free money</h3>
+            <div>Click on the button bellow to get free money.</div>
+          </UI.Card.Content>
+          <UI.Card.Footer>
+            <UI.Button
+              level="critical"
+              size="small"
+              action={() => alert("Button clicked!")}
+            >
+              Submit
+            </UI.Button>
+          </UI.Card.Footer>
+        </UI.Card>
         <form>
           <UI.InputGroup>
             <UI.InputGroup.Label htmlFor="username">
