@@ -37,6 +37,14 @@ const Home: FC<HomeProps> = () => {
             </UI.Button>
           </UI.Card.Footer>
         </UI.Card>
+        <UI.Autocomplete
+          initialOptions={["duck", "cat", "dog", "frog", "bird", "mouse"]}
+        >
+          <UI.Autocomplete.Label htmlFor="autocomplete">
+            Autocomplete
+          </UI.Autocomplete.Label>
+          <UI.Autocomplete.Input id="autocomplete" type="text" />
+        </UI.Autocomplete>
         <form>
           <UI.InputGroup>
             <UI.InputGroup.Label htmlFor="username">
