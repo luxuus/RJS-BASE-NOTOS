@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 
-export const InputWrapper = styled.input`
+export const InputWrapper = styled.input<{ invalid: boolean }>`
   padding: 0.5rem;
-
+  border: 1px solid ${(props) => (props.invalid ? "red" : "transparent")};
   /* &:invalid {
     outline: 2px solid red;
   }
@@ -21,7 +21,7 @@ export const InputGroupWrapper = styled.div`
   margin-block-end: 1rem;
 `;
 
-export const ErrorWrapper = styled.div`
-  font-size: 0.875rem;
+export const ErrorWrapper = styled.small`
+  margin-block-start: 0.25rem;
   color: red;
 `;

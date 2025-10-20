@@ -57,6 +57,7 @@ const Input: FC<InputProps> = ({ ...props }) => {
   return (
     <InputWrapper
       ref={inputRef}
+      invalid={invalid}
       onBlur={() => setInvalid(!(inputRef.current?.checkValidity() ?? false))}
       onInvalid={() => setInvalid(true)}
       {...props}
