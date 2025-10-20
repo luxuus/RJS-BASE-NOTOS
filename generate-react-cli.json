@@ -17,6 +17,26 @@
         "test": "templates/components/TemplateName.test.tsx"
       }
     },
+    "service": {
+      "path": "src/core/services",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templates/services/TemplateName.service.ts"
+      }
+    },
+    "dto": {
+      "path": "src/core/dto",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templates/dto/TemplateName.dto.ts"
+      }
+    },
     "view": {
       "path": "src/views",
       "withStyle": true,
