@@ -4,11 +4,11 @@
  */
 import * as Generics from "./generic.types";
 
-export type ENDPOINTS = 'notifications' | 'products' | 'flights' | 'orders';
+export type ENDPOINTS = '/notifications' | '/products' | '/flights' | '/orders' | '/posts';
 
 export interface CrudService<T extends Generics.WithUniqueId> {
 
-  API: `/${ENDPOINTS}`;
+  API: ENDPOINTS;
 
   create(item: Omit<T, 'id'>): Promise<T>;
 

@@ -6,7 +6,7 @@ import * as Generics from "../types/generic.types";
 
 export abstract class CrudAbstract<T extends Generics.WithUniqueId> implements CrudService<T>{
 
-    API!:  `/${ENDPOINTS}`;
+    API!:  ENDPOINTS;
 
     protected http = axios;
 
@@ -35,6 +35,5 @@ export abstract class CrudAbstract<T extends Generics.WithUniqueId> implements C
         return this.http.delete<T>(`${this.API}/${target.id}`).then(res => res.data);
     }
 
-    
 
 }
