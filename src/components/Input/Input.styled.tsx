@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const InputWrapper = styled.input<{ invalid: boolean }>`
   padding: 0.5rem;
-  border: 1px solid ${(props) => (props.invalid ? "red" : "transparent")};
+  border: 1px solid ${(props) => (props.invalid ? "red" : "initial")};
   /* &:invalid {
     outline: 2px solid red;
   }
