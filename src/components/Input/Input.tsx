@@ -26,12 +26,12 @@ interface ErrorProps extends PropsWithChildren {}
 interface InputGroupProps extends PropsWithChildren {}
 interface InputGroupContextType {
   invalid: boolean;
-  setInvalid: Dispatch<SetStateAction<boolean>>;
+  setInvalid: Dispatch<SetStateAction<InputGroupContextType["invalid"]>>;
 }
 
 const InputGroupContext = createContext<InputGroupContextType>({
   invalid: false,
-  setInvalid: () => {},
+  setInvalid: (value) => {},
 });
 
 const InputGroup: FC<InputGroupProps> & {
@@ -51,8 +51,17 @@ const Label: FC<LabelProps> = ({ children, ...props }) => {
   return <LabelWrapper {...props}>{children}</LabelWrapper>;
 };
 
+/**
+ * Le composant doit être appelé sous un InputGroup
+ * checkValidity est une méthode standard d'HTML5
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement/checkValidity
+ */
 const Input: FC<InputProps> = ({ ...props }) => {
-  const { invalid, setInvalid } = useContext(InputGroupContext);
+  const ctx = useContext(InputGroupContext);
+  if (!ctx) throw "Le composant doit être appelé sous un InputGroup";
+  const { invalid, setInvalid } = ctx;
+
   const inputRef = useRef<HTMLInputElement | null>(null);
   return (
     <InputWrapper
