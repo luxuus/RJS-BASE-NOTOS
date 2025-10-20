@@ -2,7 +2,10 @@
 import Main from './Main';
 
 export default {
-  title: "Main",
+  title: "UI/Main",
+  parameters: {
+    docs: { autodocs: true },
+  },
 };
 
 export const Default = () => <Main />;

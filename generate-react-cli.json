@@ -2,6 +2,26 @@
   "usesTypeScript": true,
   "usesStyledComponents": true,
   "component": {
+    "service": {
+      "path": "src/core/services",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templates/services/TemplateName.service.ts"
+      }
+    },
+    "dto": {
+      "path": "src/core/dto",
+      "withStyle": false,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false,
+      "customTemplates": {
+        "component": "templates/dto/TemplateName.dto.ts"
+      }
+    },
     "default": {
       "path": "src/components",
       "withStyle": true,

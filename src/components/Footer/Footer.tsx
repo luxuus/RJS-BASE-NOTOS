@@ -1,91 +1,80 @@
-import React, { FC, PropsWithChildren } from "react";
-
+import React, { useMemo } from "react";
+import { faInstagram, faLinkedin, FontAwesomeIcon } from "@/bridges/fa";
 import {
-  ContentWrapper,
-  FooterContact,
-  FooterLegal,
-  FooterSocial,
   FooterWrapper,
+  Row,
+  Block,
+  Title,
+  Links,
+  Socials,
+  Copy,
 } from "./Footer.styled";
 
-interface FooterProps extends PropsWithChildren {}
-interface ContactProps {
-  text: string;
-  iconUrl: string;
-}
-interface SocialProps {
-  url: string;
-  label?: string;
-  iconUrl: string;
-}
-interface LegalProps {
-  text: string;
-  url: string;
-}
-interface ContentProps extends PropsWithChildren {
-  label: string;
-}
-
-const Footer: FC<FooterProps> & {
-  Contact: FC<ContactProps>;
-  Social: FC<SocialProps>;
-  Legal: FC<LegalProps>;
-  Content: FC<ContentProps>;
-} = ({ children }) => {
-  return <FooterWrapper data-testid="Footer">{children}</FooterWrapper>;
+type FooterProps = {
+  companyName?: string;
+  email?: string;
+  phone?: string;
 };
 
-const Content: FC<ContentProps> = ({ children, label }) => {
+const Footer: React.FC<FooterProps> = ({
+  companyName = "Votre Société",
+  email,
+  phone,
+}) => {
+  const year = useMemo(() => new Date().getFullYear(), []);
+
   return (
-    <ContentWrapper>
-      <h4>{label}</h4>
-      <ul>{children}</ul>
-    </ContentWrapper>
+    <FooterWrapper data-testid="Footer">
+      <Row>
+        <Block>
+          <Title>Contact</Title>
+          <Links>
+            {email && <a href={`mailto:${email}`}>{email}</a>}
+            {phone && <a href={`tel:${phone}`}>{phone}</a>}
+          </Links>
+        </Block>
+
+        <Block>
+          <Title>Légal</Title>
+          <Links>
+            <a href="/legal">Mentions légales</a>
+            <a href="/privacy">Confidentialité</a>
+            <a href="/terms">CGU</a>
+          </Links>
+        </Block>
+
+        <Block>
+          <Title>Suivez-nous</Title>
+          <Socials>
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+            <a
+              href="https://www.linkedin.com/company/id-info/posts/?feedView=all"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FontAwesomeIcon icon={faLinkedin} />
+            </a>
+          </Socials>
+        </Block>
+      </Row>
+
+      <Copy>
+        © {year} {companyName}. Tous droits réservés.
+      </Copy>
+    </FooterWrapper>
   );
 };
-const Contact: FC<ContactProps> = ({ text, iconUrl }) => {
-  return (
-    <FooterContact>
-      <img src={iconUrl} height={20} alt="contact" />
-      <span>{text}</span>
-    </FooterContact>
-  );
-};
+/**
+ * Si le composant ne change pas, exporté la version Mémoisé
+ */
+// const FooterMemo = React.memo(Footer);
 
-const Social: FC<SocialProps> = ({ label, url, iconUrl }) => {
-  return (
-    <FooterSocial>
-      <img src={iconUrl} height={20} alt="social" />
-      <a href={url}>{label}</a>
-    </FooterSocial>
-  );
-};
-
-const Legal: FC<LegalProps> = ({ text, url }) => {
-  return (
-    <FooterLegal>
-      <a href={url}>{text}</a>
-    </FooterLegal>
-  );
-};
-
-Footer.Contact = Contact;
-Footer.Legal = Legal;
-Footer.Social = Social;
-Footer.Content = Content;
-
-const FooterMemo = React.memo(Footer) as unknown as FC<FooterProps> & {
-  Contact: FC<ContactProps>;
-  Social: FC<SocialProps>;
-  Legal: FC<LegalProps>;
-  Content: FC<ContentProps>;
-};
-
-FooterMemo.Contact = React.memo(Contact);
-FooterMemo.Social = React.memo(Social);
-FooterMemo.Legal = React.memo(Legal);
-FooterMemo.Content = React.memo(Content);
-
-FooterMemo.displayName = "Footer";
-
-export default FooterMemo;
+export default Footer;

@@ -2,21 +2,23 @@
 
 - ✅ Header
 - ✅ Button
-- ✅ Main
-- ✅ Footer
-- ✅ Image
-- ✅ Input
-- Card
-- AutoComplete
-- SearchField
+- ✅Footer
+- Main
+- Image
+- ✅Input
+- ✅Card
+- ✅AutoComplete
+- ✅SearchField
 - Loader
-- Skeleton
+- ✅Skeleton
 
 # Intentions :
 
 > Avec Stories associées
 
 ## Footer
+
+> Clément
 
 - Composant Responsive footer
 - Permet d'afficher un footer responsive
@@ -63,7 +65,7 @@
 - Debounce la saisie pour éviter trop de calculs.
 - Gère la navigation clavier (flèches haut/bas, entrée, échap).
 - Les suggestions sont filtrées en fonction de la saisie.
-- Et sont founies via le props
+- Et sont fournies via le props
 
 ## SearchField
 

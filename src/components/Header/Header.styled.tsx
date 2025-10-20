@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 
 export const HeaderWrapper = styled.header`
+
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
     box-sizing: border-box;
     display: block;
     align-items: center;

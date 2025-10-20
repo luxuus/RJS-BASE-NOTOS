@@ -14,6 +14,8 @@ export type ENDPOINTS =
 export interface CrudService<T extends Generics.WithUniqueId> {
   API: ENDPOINTS;
 
+  API: ENDPOINTS;
+
   create(item: Omit<T, "id">): Promise<T>;
 
   read(): Promise<T[]>;

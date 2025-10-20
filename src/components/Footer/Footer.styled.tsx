@@ -1,77 +1,98 @@
 import styled from "@emotion/styled";
 
+import styled from "@emotion/styled";
+
 export const FooterWrapper = styled.footer`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  justify-content: center;
-  padding-inline: 2rem;
-  border-top: 1px solid #e0e0e0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial;
 
-  background-color: #333;
-  font-size: 14px;
+  background: #333;
   color: #f5f5f5;
-`;
+  border-top: 1px solid #444;
+  padding: 16px;
 
-export const ContentWrapper = styled.div`
-  ul {
-    padding: 0;
-  }
-
-  h4 {
-    color: #bababa;
-  }
-`;
-
-export const FooterContact = styled.li`
   display: flex;
+  bottom: 0;
+  flex-direction: column;
+  gap: 12px;
+
+  @media (min-width: 640px) {
+    padding: 20px 24px;
+  }
+`;
+
+export const Row = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   align-items: center;
-  padding: 0.5rem;
-  gap: 0.5rem;
+  justify-content: center;
+
+  @media (min-width: 640px) {
+    justify-content: space-between;
+  }
+`;
+
+export const Block = styled.div`
+  min-width: 220px;
+  text-align: center;
+
+  @media (min-width: 640px) {
+    text-align: left;
+  }
+`;
+
+export const Title = styled.div`
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 6px;
+  opacity: 0.9;
+`;
+
+export const Links = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
 
   a {
+    color: #f5f5f5;
     text-decoration: none;
-    color: white;
-
-    &:focus,
-    &:hover {
-      color: yellow;
-      text-decoration: underline;
-    }
+    font-size: 14px;
+    opacity: 0.9;
+  }
+  a:hover {
+    text-decoration: underline;
+    opacity: 1;
   }
 `;
 
-export const FooterSocial = styled.li`
+export const Socials = styled.div`
   display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  gap: 0.5rem;
+  gap: 10px;
 
   a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: #444;
     text-decoration: none;
-    color: white;
+  }
+  a:hover {
+    background: #555;
+  }
 
-    &:focus,
-    &:hover {
-      color: yellow;
-      text-decoration: underline;
-    }
+  svg {
+    width: 18px;
+    height: 18px;
+    color: #f5f5f5;
   }
 `;
 
-export const FooterLegal = styled.li`
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  gap: 0.5rem;
-
-  a {
-    text-decoration: none;
-    color: white;
-
-    &:focus,
-    &:hover {
-      color: yellow;
-      text-decoration: underline;
-    }
-  }
+export const Copy = styled.div`
+  font-size: 12px;
+  opacity: 0.7;
+  text-align: center;
 `;

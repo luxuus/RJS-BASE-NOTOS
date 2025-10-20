@@ -1,94 +1,166 @@
+/* Global Imports */
 import React, {
-  createContext,
-  Dispatch,
   FC,
-  PropsWithChildren,
-  SetStateAction,
-  useContext,
+  ReactNode,
+  useId,
+  useMemo,
   useState,
+  useCallback,
 } from "react";
 
-import styled from "@emotion/styled";
-
+/* Local Imports */
 import {
-  CardTriggerWrapper,
   CardWrapper,
-  CardFooterWrapper,
-  CardContentWrapper,
-  CardHeaderWrapper,
+  CardHeader,
+  CardTitle,
+  CardActions,
+  CardToggle,
+  CardBody,
+  CardFooter,
 } from "./Card.styled";
-interface CardProps extends PropsWithChildren {
-  isOpen?: boolean;
+
+export type CardAction = {
+  key?: string;
+  label: string;
+  onClick?: () => void;
+  disabled?: boolean;
+  title?: string; // tooltip
+};
+
+export interface CardProps {
+  /** Titre affiché dans l’en-tête */
+  title?: ReactNode;
+  /** Contenu principal (visible si ouvert) */
+  children?: ReactNode;
+  /** Boutons d’action alignés à droite dans l’en-tête */
+  actions?: CardAction[];
+  /** Pied de carte optionnel */
+  footer?: ReactNode;
+
+  /** Si fourni, la carte devient contrôlée (ignore internal state) */
+  open?: boolean;
+  /** État initial si non contrôlé */
+  defaultOpen?: boolean;
+  /** Callback à chaque bascule */
+  onToggle?: (open: boolean) => void;
+
+  /** Désactive la possibilité d’ouvrir/fermer */
+  collapsible?: boolean;
+  /** Texte accessible pour le bouton de toggling */
+  toggleAriaLabel?: string;
+
+  /** Style/props pass-through */
+  className?: string;
+  style?: React.CSSProperties;
+  /** Data-testid pour les tests */
+  "data-testid"?: string;
 }
 interface CardTriggerProps extends PropsWithChildren {}
 interface CardHeaderProps extends PropsWithChildren {}
 interface CardContentProps extends PropsWithChildren {}
 interface CardFooterProps extends PropsWithChildren {}
 
-interface CardContextType {
-  open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>;
-}
-const CardContext = createContext<CardContextType>({
-  open: true,
-  setOpen: () => {},
-});
+const Card: FC<CardProps> = ({
+  title,
+  children,
+  actions,
+  footer,
+  open,
+  defaultOpen = true,
+  onToggle,
+  collapsible = true,
+  toggleAriaLabel = "Afficher/masquer le contenu",
+  className,
+  style,
+  "data-testid": dataTestId = "Card",
+}) => {
+  const isControlled = typeof open === "boolean";
+  const [innerOpen, setInnerOpen] = useState<boolean>(defaultOpen);
+  const actualOpen = isControlled ? (open as boolean) : innerOpen;
 
-const Card: FC<CardProps> & {
-  Trigger: FC<CardTriggerProps>;
-  Header: FC<CardHeaderProps>;
-  Content: FC<CardContentProps>;
-  Footer: FC<CardFooterProps>;
-} = ({ children, isOpen = true }) => {
-  const [open, setOpen] = useState(isOpen);
+  const titleId = useId();
+  const bodyId = useId();
+
+  const handleToggle = useCallback(() => {
+    if (!collapsible) return;
+    const next = !actualOpen;
+    if (!isControlled) setInnerOpen(next);
+    onToggle?.(next);
+  }, [actualOpen, collapsible, isControlled, onToggle]);
+
+  const hasHeaderActions = (actions?.length ?? 0) > 0;
+
+  const actionButtons = useMemo(
+    () =>
+      (actions ?? []).map((a, idx) => (
+        <button
+          key={a.key ?? `action-${idx}`}
+          type="button"
+          onClick={a.onClick}
+          disabled={a.disabled}
+          title={a.title}
+          className="card-action"
+        >
+          {a.label}
+        </button>
+      )),
+    [actions]
+  );
+
   return (
-    <CardContext.Provider value={{ open, setOpen }}>
-      <CardWrapper>{children}</CardWrapper>
-    </CardContext.Provider>
+    <CardWrapper
+      className={className}
+      style={style}
+      data-testid={dataTestId}
+      data-open={actualOpen ? "true" : "false"}
+    >
+      {(title || collapsible || hasHeaderActions) && (
+        <CardHeader>
+          {title && <CardTitle id={titleId}>{title}</CardTitle>}
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              alignItems: "center",
+              marginLeft: "auto",
+            }}
+          >
+            {hasHeaderActions && (
+              <CardActions aria-label="Actions de la carte">
+                {actionButtons}
+              </CardActions>
+            )}
+            {collapsible && (
+              <CardToggle
+                type="button"
+                aria-expanded={actualOpen}
+                aria-controls={bodyId}
+                aria-label={toggleAriaLabel}
+                onClick={handleToggle}
+              >
+                {actualOpen ? "▾" : "▸"}
+              </CardToggle>
+            )}
+          </div>
+        </CardHeader>
+      )}
+
+      <CardBody
+        id={bodyId}
+        role="region"
+        aria-labelledby={title ? titleId : undefined}
+        hidden={!actualOpen}
+        data-open={actualOpen ? "true" : "false"}
+      >
+        {children}
+      </CardBody>
+
+      {footer && <CardFooter>{footer}</CardFooter>}
+    </CardWrapper>
   );
 };
 
-const CardTrigger: FC<CardTriggerProps> = ({ children }) => {
-  const { open, setOpen } = useContext(CardContext);
-
-  return (
-    <CardTriggerWrapper open={open} onClick={() => setOpen(!open)}>
-      {children}
-    </CardTriggerWrapper>
-  );
-};
-
-const CardHeader: FC<CardHeaderProps> = ({ children }) => {
-  const { open } = useContext(CardContext);
-  return <CardHeaderWrapper open={open}>{children}</CardHeaderWrapper>;
-};
-
-const CardContent: FC<CardContentProps> = ({ children }) => {
-  const { open } = useContext(CardContext);
-  return <CardContentWrapper open={open}>{children}</CardContentWrapper>;
-};
-
-const CardFooter: FC<CardFooterProps> = ({ children }) => {
-  const { open } = useContext(CardContext);
-  return <CardFooterWrapper open={open}>{children}</CardFooterWrapper>;
-};
-
-Card.Trigger = CardTrigger;
-Card.Header = CardHeader;
-Card.Content = CardContent;
-Card.Footer = CardFooter;
-
-const CardMemo = React.memo(Card) as unknown as FC<CardProps> & {
-  Trigger: FC<CardTriggerProps>;
-  Header: FC<CardHeaderProps>;
-  Content: FC<CardContentProps>;
-  Footer: FC<CardFooterProps>;
-};
-CardMemo.Trigger = React.memo(CardTrigger);
-CardMemo.Header = React.memo(CardHeader);
-CardMemo.Content = React.memo(CardContent);
-CardMemo.Footer = React.memo(CardFooter);
-
-CardMemo.displayName = "Card Memoized";
+const CardMemo = React.memo(Card);
+CardMemo.displayName = "Card";
 
 export default CardMemo;

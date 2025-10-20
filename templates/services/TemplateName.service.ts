@@ -1,4 +1,4 @@
-import { TemplateNameDTO } from "@/core/dto/templatename.dto";
+import { TemplateNameDTO } from "@/core/dto/notification.dto";
 import { ENDPOINTS } from "@/core/types/crud-service.type";
 import { CrudAbstract } from "@/core/services/crud.abstract";
 

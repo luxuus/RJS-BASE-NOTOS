@@ -28,11 +28,16 @@ git branch -M dev
 
 <!-- LINE_COUNT_PLACEHOLDER_1 -->
 
+<<<<<<< HEAD
 **Lines of Code:** `2588`  
+=======
+**Lines of Code:** `2203`  
+>>>>>>> b93df8d69126edb63956e2de21fb0141081e8e70
 **Project Size:** Growing codebase 🏗️
 
 | Extension | Files | Effective LOC |
 |-----------|--------|----------------:|
+<<<<<<< HEAD
 | `.tsx` | 81 | 1313 |
 | `.ts` | 22 | 451 |
 | `.md` | 10 | 342 |
@@ -41,6 +46,16 @@ git branch -M dev
 | `.avif` | 1 | 5 |
 | `no_ext` | 12 | 0 |
 | **Total** | **135** | **2588** |
+=======
+| `.tsx` | 56 | 918 |
+| `.ts` | 22 | 451 |
+| `.md` | 10 | 342 |
+| `.mdx` | 1 | 327 |
+| `.css` | 8 | 151 |
+| `no_ext` | 13 | 9 |
+| `.avif` | 1 | 5 |
+| **Total** | **111** | **2203** |
+>>>>>>> b93df8d69126edb63956e2de21fb0141081e8e70
 
 <!-- LINE_COUNT_PLACEHOLDER_2 -->
 

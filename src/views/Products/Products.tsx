@@ -8,8 +8,8 @@ import * as Hooks from "@/hooks";
 
 /* Local Imports */
 import "./Products.style.css";
-import productService from "@/core/services/product.service";
 import { ProductDTO } from "@/core/dto/product.dto";
+import ProductService from "@/core/services/Product.service";
 
 interface ProductsProps {}
 
@@ -21,12 +21,18 @@ const Products: FC<ProductsProps> = () => {
     productService.read().then((data) => setProducts(data));
   }, []);
 
+  const [products, setProducts] = useState<ProductDTO[]>([]);
+
+  useEffect(() => {
+    ProductService.read().then((data) => setProducts(data));
+  }, []);
+
   return (
     <div className="Products" data-testid="Products">
       <UI.Main>
         Products Content
         <hr />
-        <pre>{JSON.stringify(products, null, 4)}</pre>
+        {JSON.stringify(products)}
       </UI.Main>
     </div>
   );

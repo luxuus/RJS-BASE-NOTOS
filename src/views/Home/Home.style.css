@@ -1,11 +1,5 @@
 .Home {
-  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.input__wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
 }

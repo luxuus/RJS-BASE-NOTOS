@@ -2,7 +2,10 @@
 import Footer from './Footer';
 
 export default {
-  title: "Footer",
+  title: "UI/Footer",
+  parameters: {
+    docs: { autodocs: true },
+  },
 };
 
 export const Default = () => <Footer />;

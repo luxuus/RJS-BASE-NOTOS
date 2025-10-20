@@ -7,7 +7,9 @@ import * as Hooks from "@/hooks";
 /* Local Imports */
 import { SkeletonWrapper, SkeletonHelperWrapper } from "./Skeleton.styled";
 
-interface SkeletonProps extends PropsWithChildren {}
+interface SkeletonProps extends PropsWithChildren {
+  "data-testid"?: string;
+}
 interface SkeletonHelperProps extends PropsWithChildren {
   width: number;
   height: number;
@@ -42,8 +44,8 @@ const Skeleton: FC<SkeletonProps> & {
   Text: FC<TextSkeletonProps>;
   Paragraph: FC<ParagraphSkeletonProps>;
   Button: FC<ButtonSkeletonProps>;
-} = ({ children }) => {
-  return <SkeletonWrapper>{children}</SkeletonWrapper>;
+} = ({ children, "data-testid": dataTestId = "Skeleton" }) => {
+  return <SkeletonWrapper data-testid={dataTestId}>{children}</SkeletonWrapper>;
 };
 
 const SkeletonHelper: FC<SkeletonHelperProps> = ({
@@ -58,7 +60,11 @@ const SkeletonHelper: FC<SkeletonHelperProps> = ({
           key={index}
           width={width}
           height={height}
-        ></SkeletonHelperWrapper>
+          data-skeleton="block"
+          data-width={width}
+          data-height={height}
+          data-idx={index}
+        />
       ))}
     </>
   );
