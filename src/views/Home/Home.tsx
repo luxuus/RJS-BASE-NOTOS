@@ -17,6 +17,11 @@ const Home: FC<HomeProps> = () => {
     <div className="Home" data-testid="Home">
       <UI.Main>
         <h2>Home Content</h2>
+        <UI.Skeleton>
+          <UI.Skeleton.Button width={200} height={50} />
+          <UI.Skeleton.Text width={1000} height={50} rows={3} />
+        </UI.Skeleton>
+
         <UI.Loader spinner={false} progress={50} max={100} />
         <UI.Loader spinner />
         <UI.Card>
