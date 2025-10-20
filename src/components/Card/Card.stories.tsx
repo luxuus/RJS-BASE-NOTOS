@@ -5,6 +5,9 @@ import Card from './Card';
 export default {
   title: 'UI/Card',
   component: Card,
+  parameters: {
+    docs: { autodocs: true },
+  },
 };
 
 export const Default = () => (

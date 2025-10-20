@@ -4,6 +4,9 @@ import { keyframes } from '@emotion/react';
 export const LoaderWrapper = styled.div<{
   inline?: boolean;
 }>`
+
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
   display: ${(p) => (p.inline ? 'inline-flex' : 'flex')};
   align-items: center;
   gap: 0.5rem;

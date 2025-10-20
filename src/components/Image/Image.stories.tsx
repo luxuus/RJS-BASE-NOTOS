@@ -5,6 +5,9 @@ import Image from './Image';
 export default {
   title: 'UI/Image',
   component: Image,
+  parameters: {
+    docs: { autodocs: true },
+  },
 };
 
 const VALID = 'https://picsum.photos/id/1025/800/500';

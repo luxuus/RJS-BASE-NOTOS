@@ -1,6 +1,10 @@
 import styled from "@emotion/styled";
  
-export const SkeletonWrapper = styled.div``;
+export const SkeletonWrapper = styled.div`
+
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
+`;
  
 export const SkeletonHelperWrapper = styled.div<{
   width: number;

@@ -1,12 +1,16 @@
 import styled from '@emotion/styled';
  
 export const FooterWrapper = styled.footer`
+
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
   background: #333;
   color: #f5f5f5;
   border-top: 1px solid #444;
   padding: 16px;
  
   display: flex;
+  bottom: 0;
   flex-direction: column;
   gap: 12px;
  

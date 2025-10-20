@@ -8,6 +8,7 @@ const meta: Meta<typeof Loader> = {
   args: {
     label: 'Chargement…',
   },
+  tags: ['autodocs'],
   argTypes: {
     variant: { control: { type: 'inline-radio' }, options: ['spinner', 'bar'] },
     value: { control: { type: 'number', min: 0, max: 100, step: 1 } },

@@ -6,6 +6,8 @@ export const CardWrapper = styled.div`
   --card-border: #e2e8f0; /* slate-200 */
   --card-muted: #64748b; /* slate-500 */
   --card-shadow: 0 1px 2px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.1);
+  
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
 
   background: var(--card-bg);
   color: var(--card-fg);

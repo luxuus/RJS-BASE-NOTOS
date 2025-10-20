@@ -5,6 +5,9 @@ import AutoComplete from './AutoComplete';
 export default {
   title: 'UI/AutoComplete',
   component: AutoComplete,
+  parameters: {
+    docs: { autodocs: true },
+  },
 };
 
 const CITIES = [

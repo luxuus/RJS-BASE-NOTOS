@@ -5,6 +5,9 @@ import Searchfield from './Searchfield';
 export default {
   title: "UI/Searchfield",
   component: Searchfield,
+  parameters: {
+    docs: { autodocs: true },
+  },
 };
 
 export const Default = () => <Searchfield />;

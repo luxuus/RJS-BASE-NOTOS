@@ -1,6 +1,9 @@
 import styled from '@emotion/styled';
 
 export const ImageWrapper = styled.figure`
+
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
   position: relative;
   margin: 0;
   overflow: hidden;

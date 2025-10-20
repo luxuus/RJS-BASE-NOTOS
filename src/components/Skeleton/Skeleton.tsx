@@ -1,13 +1,15 @@
 /* Global Imports */
 import React, { FC, PropsWithChildren } from "react";
- 
+
 /* Application Level Imports */
 import * as Hooks from "@/hooks";
- 
+
 /* Local Imports */
 import { SkeletonWrapper, SkeletonHelperWrapper } from "./Skeleton.styled";
- 
-interface SkeletonProps extends PropsWithChildren {}
+
+interface SkeletonProps extends PropsWithChildren {
+  'data-testid'?: string;
+}
 interface SkeletonHelperProps extends PropsWithChildren {
   width: number;
   height: number;
@@ -35,17 +37,17 @@ interface ButtonSkeletonProps extends PropsWithChildren {
   width: number;
   height: number;
 }
- 
+
 const Skeleton: FC<SkeletonProps> & {
   Image: FC<ImageSkeletonProps>;
   Card: FC<CardSkeletonProps>;
   Text: FC<TextSkeletonProps>;
   Paragraph: FC<ParagraphSkeletonProps>;
   Button: FC<ButtonSkeletonProps>;
-} = ({ children }) => {
-  return <SkeletonWrapper>{children}</SkeletonWrapper>;
+} = ({ children, 'data-testid': dataTestId = 'Skeleton' }) => {
+  return <SkeletonWrapper data-testid={dataTestId}>{children}</SkeletonWrapper>;
 };
- 
+
 const SkeletonHelper: FC<SkeletonHelperProps> = ({
   width,
   height,
@@ -58,16 +60,20 @@ const SkeletonHelper: FC<SkeletonHelperProps> = ({
           key={index}
           width={width}
           height={height}
-        ></SkeletonHelperWrapper>
+          data-skeleton="block"
+          data-width={width}
+          data-height={height}
+          data-idx={index}
+        />
       ))}
     </>
   );
 };
- 
+
 const Image: FC<ImageSkeletonProps> = ({ width, height }) => {
   return <SkeletonHelper width={width} height={height} />;
 };
- 
+
 const Card: FC<ImageSkeletonProps> = ({ width, height }) => {
   return <SkeletonHelper width={width} height={height} />;
 };
@@ -77,11 +83,11 @@ const Text: FC<TextSkeletonProps> = ({ width, height, rows }) => {
 const Paragraph: FC<ParagraphSkeletonProps> = ({ width, height }) => {
   return <SkeletonHelper width={width} height={height} />;
 };
- 
+
 const Button: FC<ButtonSkeletonProps> = ({ width, height }) => {
   return <SkeletonHelper width={width} height={height} />;
 };
- 
+
 Skeleton.Image = Image;
 Skeleton.Card = Card;
 Skeleton.Text = Text;
@@ -104,7 +110,7 @@ SkeletonMemo.Card = React.memo(Card);
 SkeletonMemo.Text = React.memo(Text);
 SkeletonMemo.Paragraph = React.memo(Paragraph);
 SkeletonMemo.Button = React.memo(Button);
- 
+
 SkeletonMemo.displayName = "Skeleton Memoized";
- 
+
 export default SkeletonMemo;

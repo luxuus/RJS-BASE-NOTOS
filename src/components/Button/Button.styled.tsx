@@ -3,6 +3,9 @@ import { UILevel, UISize } from '@/core/types/ui.types';
 import styled from '@emotion/styled';
 
 export const ButtonWrapper = styled.button<UISize & { disabled?: boolean } & UILevel>`
+
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+
     padding: 8px 16px;
     border-radius: 4px;
     font-size: 16px;
