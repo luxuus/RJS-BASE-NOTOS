@@ -11,6 +11,12 @@ import React, {
 } from "react";
 import styled from "@emotion/styled";
 
+import {
+  AutocompleteLabelWrapper,
+  AutocompleteInputWrapper,
+  AutocompleteDropdownWrapper,
+} from "./Autocomplete.styled";
+
 interface AutocompleteGroupProps extends PropsWithChildren {
   initialOptions: Array<string>;
 }
@@ -66,9 +72,6 @@ const Label: FC<AutocompleteLabelProps> = ({ children, ...props }) => {
     <AutocompleteLabelWrapper {...props}>{children}</AutocompleteLabelWrapper>
   );
 };
-const AutocompleteLabelWrapper = styled.label`
-  margin-block-end: 0.5rem;
-`;
 
 const Input: FC<AutocompleteInputProps> = ({ ...props }) => {
   const { option, setOption, options, open, setOpen } =
@@ -169,44 +172,9 @@ const Input: FC<AutocompleteInputProps> = ({ ...props }) => {
   );
 };
 
-const AutocompleteInputWrapper = styled.input`
-  padding: 0.5rem;
-`;
-
-const AutocompleteDropdownWrapper = styled.div<{ open: boolean }>`
-  ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background-color: var(--background);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    display: ${(props) => (props.open ? "block" : "none")};
-
-    button {
-      display: block;
-      width: 100%;
-      border: 0;
-      padding-inline: 0.5rem;
-      padding-block: 0.5rem;
-      text-align: start;
-      background-color: var(--background);
-      cursor: pointer;
-
-      &:hover,
-      &:focus,
-      &.active {
-        background-color: var(--accent);
-      }
-    }
-  }
-`;
-
-// Attach subcomponents to the main component
 AutocompleteGroup.Label = Label;
 AutocompleteGroup.Input = Input;
 
-// Memoize the main component and its subcomponents
 const AutocompleteGroupMemo = React.memo(
   AutocompleteGroup
 ) as unknown as FC<AutocompleteGroupProps> & {
