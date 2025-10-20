@@ -7,3 +7,5 @@ import { FlightDTO } from "../dto/flight.dto";
 class FlightService extends CrudAbstract<FlightDTO>{
     API: ENDPOINTS = '/flights'
 }
+
+export default new FlightService();

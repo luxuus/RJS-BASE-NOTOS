@@ -3,7 +3,6 @@ import { ENDPOINTS } from "@/core/types/crud-service.type";
 import { CrudAbstract } from "@/core/services/crud.abstract";
 import { ProductDTO } from "../dto/product.dto";
 
-
 class ProductService extends CrudAbstract<ProductDTO> {
     API: ENDPOINTS = '/products'
 
@@ -22,3 +21,5 @@ class ProductService extends CrudAbstract<ProductDTO> {
         })
     }
 }
+
+export default new ProductService();

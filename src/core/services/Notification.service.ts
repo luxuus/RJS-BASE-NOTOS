@@ -7,3 +7,5 @@ import { NotificationDTO } from "../dto/Notification.dto";
 class NotificationService extends CrudAbstract<NotificationDTO>{
     API: ENDPOINTS = '/notifications'
 }
+
+export default new NotificationService();
