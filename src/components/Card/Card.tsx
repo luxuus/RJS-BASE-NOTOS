@@ -10,6 +10,13 @@ import React, {
 
 import styled from "@emotion/styled";
 
+import {
+  CardTriggerWrapper,
+  CardWrapper,
+  CardFooterWrapper,
+  CardContentWrapper,
+  CardHeaderWrapper,
+} from "./Card.styled";
 interface CardProps extends PropsWithChildren {
   isOpen?: boolean;
 }
@@ -41,17 +48,6 @@ const Card: FC<CardProps> & {
   );
 };
 
-const CardWrapper = styled.div`
-  display: grid;
-  padding-inline: 1rem;
-  padding-block: 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-
-  background: var(--card);
-  position: relative;
-`;
-
 const CardTrigger: FC<CardTriggerProps> = ({ children }) => {
   const { open, setOpen } = useContext(CardContext);
 
@@ -62,39 +58,20 @@ const CardTrigger: FC<CardTriggerProps> = ({ children }) => {
   );
 };
 
-const CardTriggerWrapper = styled.button<{ open: boolean }>`
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-end: 0;
-`;
-
 const CardHeader: FC<CardHeaderProps> = ({ children }) => {
   const { open } = useContext(CardContext);
   return <CardHeaderWrapper open={open}>{children}</CardHeaderWrapper>;
 };
-
-const CardHeaderWrapper = styled.div<{ open: boolean }>`
-  display: ${(props) => (props.open ? "block" : "none")};
-`;
 
 const CardContent: FC<CardContentProps> = ({ children }) => {
   const { open } = useContext(CardContext);
   return <CardContentWrapper open={open}>{children}</CardContentWrapper>;
 };
 
-const CardContentWrapper = styled.div<{ open: boolean }>`
-  display: ${(props) => (props.open ? "block" : "none")};
-`;
-
 const CardFooter: FC<CardFooterProps> = ({ children }) => {
   const { open } = useContext(CardContext);
   return <CardFooterWrapper open={open}>{children}</CardFooterWrapper>;
 };
-
-const CardFooterWrapper = styled.div<{ open: boolean }>`
-  display: ${(props) => (props.open ? "block" : "none")};
-  margin-block: 1rem;
-`;
 
 Card.Trigger = CardTrigger;
 Card.Header = CardHeader;
