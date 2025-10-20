@@ -3,21 +3,22 @@
 
 * ✅ Header
 * ✅ Button
-* Footer
+* ✅Footer
 * Main
 * Image
-* Input
-* Card
-* AutoComplete
-* SearchField
+* ✅Input
+* ✅Card
+* ✅AutoComplete
+* ✅SearchField
 * Loader
-* Skeleton
+* ✅Skeleton
 
 # Intentions :
 
 > Avec Stories associées
 
 ## Footer
+> Clément 
  * Composant Responsive footer
  * Permet d'afficher un footer responsive
  * Contient des liens vers les réseaux sociaux et les informations légales
@@ -30,6 +31,7 @@
  * 
  * Peut recevoir une description pour l'attribut alt.
  * S'affichant overlay sur l'image.
+
 ## Input
 * Composant Input
  * Composant réutilisable pour les champs de formulaire
@@ -43,6 +45,7 @@
  * 
  * Affiche un message d'erreur si la validation échoue
  * Reflete l'état de validation visuellement 
+ 
 ## Card
  * Composant Card
  * Composant de base pour afficher une carte avec un titre et du contenu.
@@ -56,7 +59,8 @@
  * Debounce la saisie pour éviter trop de calculs.
  * Gère la navigation clavier (flèches haut/bas, entrée, échap).
  * Les suggestions sont filtrées en fonction de la saisie.
- * Et sont founies via le props
+ * Et sont fournies via le props
+
 ## SearchField
  * Composant SearchField
  * 
@@ -70,6 +74,7 @@
  * Reprensent un incicateur de chargement
  * Soit une progression determinee
  * ProgressBar ou Spinner
+
 ## Skeleton
  * Composant Skeleton
  * Permet de representer 
