@@ -2,7 +2,7 @@
 import Skeleton from './Skeleton';
 
 export default {
-  title: "Skeleton",
+  title: "UI/Skeleton",
 };
 
 export const Default = () => <Skeleton />;

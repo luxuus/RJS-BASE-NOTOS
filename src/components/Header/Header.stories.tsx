@@ -2,7 +2,7 @@
 import Header from './Header';
 
 export default {
-  title: "Header",
+  title: "UI/Header",
 };
 
 export const Default = () => <Header />;

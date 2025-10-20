@@ -81,6 +81,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
   style,
   'data-testid': dataTestId = 'AutoComplete',
 }) => {
+  
   const isControlled = value !== undefined;
   const [innerValue, setInnerValue] = useState<string>(defaultValue);
   const query = isControlled ? value! : innerValue;
@@ -244,7 +245,7 @@ const AutoComplete: FC<AutoCompleteProps> = ({
 };
 
 /**
- * USAGE:
+ * @example
  * <AutoComplete
  *   options={['Paris','Berlin','Lisbonne']}
  *   onSelect={(value,opt)=>console.log(value,opt)}

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AutoComplete from './AutoComplete';
 
 export default {
-  title: 'Core/AutoComplete',
+  title: 'UI/AutoComplete',
   component: AutoComplete,
 };
 

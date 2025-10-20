@@ -2,7 +2,7 @@
 import Input from './Input';
 
 export default {
-  title: "Input",
+  title: "UI/Input",
 };
 
 export const Default = () => <Input />;

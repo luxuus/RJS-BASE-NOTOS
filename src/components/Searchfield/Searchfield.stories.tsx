@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Searchfield from './Searchfield';
 
 export default {
-  title: "Core/Searchfield",
+  title: "UI/Searchfield",
   component: Searchfield,
 };
 

@@ -2,7 +2,7 @@
 import Main from './Main';
 
 export default {
-  title: "Main",
+  title: "UI/Main",
 };
 
 export const Default = () => <Main />;

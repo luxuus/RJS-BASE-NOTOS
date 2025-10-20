@@ -3,7 +3,7 @@ import React from 'react';
 import Image from './Image';
 
 export default {
-  title: 'Core/Image',
+  title: 'UI/Image',
   component: Image,
 };
 
